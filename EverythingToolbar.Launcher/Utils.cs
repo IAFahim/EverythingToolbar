@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using IWshRuntimeLibrary;
 using Microsoft.Win32;
 using NLog;
-using Shell32;
 using File = System.IO.File;
 
 namespace EverythingToolbar.Launcher
@@ -32,19 +30,15 @@ namespace EverythingToolbar.Launcher
                 {
                     var executableFileName = Path.GetFileName(executablePath);
                     var lnkFiles = Directory.GetFiles(taskBarPath, "*.lnk");
-                    var shell = new Shell();
                     foreach (var lnkFile in lnkFiles)
                     {
-                        var folder = shell.NameSpace(Path.GetDirectoryName(lnkFile));
-                        var folderItem = folder.ParseName(Path.GetFileName(lnkFile));
-                        if (folderItem is { IsLink: true })
-                        {
-                            var link = (ShellLinkObject)folderItem.GetLink;
-                            var linkFileName = Path.GetFileName(link.Path);
+                        var linkTarget = ShellLinkInterop.GetTargetPath(lnkFile);
+                        if (linkTarget is null)
+                            continue;
 
-                            if (linkFileName == executableFileName)
-                                return lnkFile;
-                        }
+                        var linkFileName = Path.GetFileName(linkTarget);
+                        if (linkFileName == executableFileName)
+                            return lnkFile;
                     }
                 }
                 catch (Exception e)
@@ -66,11 +60,11 @@ namespace EverythingToolbar.Launcher
             if (File.Exists(taskbarShortcutPath))
                 File.Delete(taskbarShortcutPath);
 
-            var shell = new WshShell();
-            var shortcut = (IWshShortcut)shell.CreateShortcut(taskbarShortcutPath);
-            shortcut.TargetPath = executableFilename;
-            shortcut.IconLocation = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, iconName);
-            shortcut.Save();
+            ShellLinkInterop.CreateShortcut(
+                taskbarShortcutPath,
+                executableFilename,
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, iconName)
+            );
 
             if (!restartExplorer)
                 return;
