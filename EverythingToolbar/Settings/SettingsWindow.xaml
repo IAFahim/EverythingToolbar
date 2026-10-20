@@ -55,6 +55,10 @@
           Icon="{ui:SymbolIcon SearchSettings20}"
           TargetPageType="{x:Type settings:Search}" />
         <ui:NavigationViewItem
+          Content="{x:Static properties:Resources.SettingsSemanticSearch}"
+          Icon="{ui:SymbolIcon EmojiSparkle20}"
+          TargetPageType="{x:Type settings:Semantic}" />
+        <ui:NavigationViewItem
           Content="{x:Static properties:Resources.SettingsUserInterface}"
           Icon="{ui:SymbolIcon WindowSettings20}"
           TargetPageType="{x:Type settings:UserInterface}" />

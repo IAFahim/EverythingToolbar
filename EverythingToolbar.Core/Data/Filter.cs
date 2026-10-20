@@ -18,6 +18,10 @@ namespace EverythingToolbar.Core.Data
         public SortBy? SortBy { get; init; }
         public bool SortDescending { get; init; }
 
+        // Semantic filters are not translated into an Everything query; they switch the search
+        // session to the local vector index instead.
+        public bool IsSemantic { get; init; }
+
         public override bool Equals(object? obj)
         {
             if (obj is not Filter item)

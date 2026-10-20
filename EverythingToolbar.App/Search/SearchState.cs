@@ -29,6 +29,10 @@ namespace EverythingToolbar.App.Search
         public bool IsRegExEnabled => _settings.IsRegExEnabled;
         public bool IsHideResultOmissions => _settings.IsHideResultOmissions;
 
+        // True when the Semantic filter is selected and the feature is enabled; the search
+        // session serves results from the local vector index instead of Everything.
+        public bool IsSemanticMode => _settings.IsSemanticSearchEnabled && Filter.IsSemantic;
+
         private bool _useSettingsSortKey;
         private bool _useSettingsSortDirection;
 
@@ -232,6 +236,9 @@ namespace EverythingToolbar.App.Search
                     break;
                 case nameof(ISettings.IsHideResultOmissions):
                     OnPropertyChanged(nameof(IsHideResultOmissions));
+                    break;
+                case nameof(ISettings.IsSemanticSearchEnabled):
+                    OnPropertyChanged(nameof(IsSemanticMode));
                     break;
                 case nameof(ISettings.SortBy):
                     OnPropertyChanged(nameof(SortBy));

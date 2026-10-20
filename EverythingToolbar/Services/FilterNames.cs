@@ -13,5 +13,6 @@ namespace EverythingToolbar.Services
         public string Executable => Resources.UserFilterExecutable;
         public string Picture => Resources.UserFilterPicture;
         public string Video => Resources.UserFilterVideo;
+        public string Semantic => Resources.DefaultFilterSemantic;
     }
 }

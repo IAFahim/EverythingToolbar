@@ -96,8 +96,21 @@ namespace EverythingToolbar.App.Services
                 },
             ];
 
+            _semanticFilter = new Filter
+            {
+                Name = names.Semantic,
+                Icon = Glyph("\xE735"),
+                Macro = "sem",
+                IsSemantic = true,
+            };
+
+            if (_settings.IsSemanticSearchEnabled)
+                DefaultFilters.Add(_semanticFilter);
+
             _settings.PropertyChanged += OnSettingsChanged;
         }
+
+        private readonly Filter _semanticFilter;
 
         private static string Glyph(string glyph) =>
             Environment.OSVersion.Version >= WindowsVersion.Windows10 ? glyph : "";
@@ -106,6 +119,16 @@ namespace EverythingToolbar.App.Services
         {
             if (e.PropertyName == nameof(ISettings.FilterOrder))
             {
+                OnPropertyChanged(nameof(Filters));
+            }
+            else if (e.PropertyName == nameof(ISettings.IsSemanticSearchEnabled))
+            {
+                // Appended last so stored filter orders of the built-in filters stay valid.
+                if (_settings.IsSemanticSearchEnabled && !DefaultFilters.Contains(_semanticFilter))
+                    DefaultFilters.Add(_semanticFilter);
+                else if (!_settings.IsSemanticSearchEnabled)
+                    DefaultFilters.Remove(_semanticFilter);
+
                 OnPropertyChanged(nameof(Filters));
             }
         }

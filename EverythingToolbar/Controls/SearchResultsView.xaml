@@ -4,6 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:app="clr-namespace:EverythingToolbar.App;assembly=EverythingToolbar.App"
   xmlns:appsearch="clr-namespace:EverythingToolbar.App.Search;assembly=EverythingToolbar.App"
+  xmlns:appsemantic="clr-namespace:EverythingToolbar.App.Semantic;assembly=EverythingToolbar.App"
   xmlns:c="clr-namespace:EverythingToolbar.Converters"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:markup="clr-namespace:EverythingToolbar.Markup"
@@ -143,13 +144,34 @@
       VirtualizingPanel.IsVirtualizing="True"
       VirtualizingPanel.ScrollUnit="Item"
       VirtualizingPanel.VirtualizationMode="Recycling" />
+    <Border
+      Padding="12 8"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Top"
+      Background="{DynamicResource SearchResultBackgroundActive}"
+      CornerRadius="6"
+      IsHitTestVisible="False"
+      Visibility="{Binding Source={markup:Service {x:Type appsemantic:SemanticSearchService}}, Path=ShowNotice, Converter={c:BoolToVisibilityConverter}}">
+      <TextBlock Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextWrapping="Wrap">
+        <TextBlock.Style>
+          <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Text" Value="{x:Static properties:Resources.SemanticNoticeEmptyIndex}" />
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding Source={markup:Service {x:Type appsemantic:SemanticSearchService}}, Path=NoticeKind}" Value="Unavailable">
+                <Setter Property="Text" Value="{x:Static properties:Resources.SemanticNoticeUnavailable}" />
+              </DataTrigger>
+            </Style.Triggers>
+          </Style>
+        </TextBlock.Style>
+      </TextBlock>
+    </Border>
+
     <Grid
       x:Name="SpinnerOverlay"
       HorizontalAlignment="Center"
       VerticalAlignment="Center"
       IsHitTestVisible="False"
-      Visibility="Collapsed">
-      <Viewbox
+      Visibility="Collapsed"><Viewbox
         Width="30"
         Height="30"
         Stretch="Fill">

@@ -1,0 +1,145 @@
+<Page
+  x:Class="EverythingToolbar.Settings.Semantic"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:b="clr-namespace:EverythingToolbar.Behaviors"
+  xmlns:c="clr-namespace:EverythingToolbar.Converters"
+  xmlns:controls="clr-namespace:EverythingToolbar.Controls"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:properties="clr-namespace:EverythingToolbar.Properties"
+  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+  d:DesignHeight="600"
+  d:DesignWidth="900"
+  Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+  Unloaded="OnUnloaded"
+  mc:Ignorable="d">
+  <i:Interaction.Behaviors>
+    <b:Themed Surface="AppWindow" />
+  </i:Interaction.Behaviors>
+
+  <ScrollViewer>
+    <StackPanel Margin="40">
+      <ui:TextBlock
+        Margin="0 0 0 25"
+        FontTypography="Title"
+        Text="{x:Static properties:Resources.SettingsSemanticSearch}" />
+      <ui:TextBlock
+        Margin="0 0 0 7"
+        FontTypography="BodyStrong"
+        Text="{x:Static properties:Resources.SettingsSemanticGeneral}" />
+      <Border
+        Padding="16"
+        Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+        BorderBrush="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+        BorderThickness="1 1 1 0"
+        CornerRadius="8,8,0,0">
+        <controls:SettingItem Title="{x:Static properties:Resources.SettingsSemanticSearch}" HelpText="{x:Static properties:Resources.SettingsSemanticSearchHelp}">
+          <controls:SettingItem.SettingContent>
+            <ui:ToggleSwitch IsChecked="{Binding Settings.IsSemanticSearchEnabled, Mode=TwoWay}" />
+          </controls:SettingItem.SettingContent>
+        </controls:SettingItem>
+      </Border>
+      <Border
+        Padding="16"
+        Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+        BorderBrush="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+        BorderThickness="1 1 1 0"
+        CornerRadius="0">
+        <controls:SettingItem Title="{x:Static properties:Resources.SettingsSemanticOllamaUrl}" HelpText="{x:Static properties:Resources.SettingsSemanticOllamaUrlHelp}">
+          <controls:SettingItem.SettingContent>
+            <ui:TextBox
+              Width="260"
+              HorizontalAlignment="Right"
+              PlaceholderText="http://localhost:11434"
+              Text="{Binding Settings.SemanticOllamaUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+          </controls:SettingItem.SettingContent>
+        </controls:SettingItem>
+      </Border>
+      <Border
+        Padding="16"
+        Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+        BorderBrush="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+        BorderThickness="1 1 1 1"
+        CornerRadius="0,0,8,8">
+        <controls:SettingItem Title="{x:Static properties:Resources.SettingsSemanticModel}" HelpText="{x:Static properties:Resources.SettingsSemanticModelHelp}">
+          <controls:SettingItem.SettingContent>
+            <ui:TextBox
+              Width="260"
+              HorizontalAlignment="Right"
+              PlaceholderText="embeddinggemma-2"
+              Text="{Binding Settings.SemanticModelTag, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+          </controls:SettingItem.SettingContent>
+        </controls:SettingItem>
+      </Border>
+
+      <ui:TextBlock
+        Margin="0 25 0 7"
+        FontTypography="BodyStrong"
+        Text="{x:Static properties:Resources.SettingsSemanticIndex}" />
+      <Border
+        Padding="16"
+        Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+        BorderBrush="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+        BorderThickness="1 1 1 1"
+        CornerRadius="8">
+        <StackPanel>
+          <controls:SettingItem Title="{x:Static properties:Resources.SettingsSemanticStatus}" HelpText="{Binding StatusHelpText}">
+            <controls:SettingItem.SettingContent>
+              <TextBlock
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                Text="{Binding StatusText}" />
+            </controls:SettingItem.SettingContent>
+          </controls:SettingItem>
+          <ProgressBar
+            Height="4"
+            Margin="0 12 0 0"
+            Maximum="1"
+            Minimum="0"
+            Visibility="{Binding State.IsIndexing, Converter={c:BoolToVisibilityConverter}}"
+            Value="{Binding State.Progress, Mode=OneWay}" />
+          <StackPanel
+            Margin="0 12 0 0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <ui:Button
+              MinWidth="110"
+              Click="OnBuildClicked"
+              Content="{x:Static properties:Resources.SettingsSemanticBuild}"
+              IsEnabled="{Binding CanBuild}" />
+            <ui:Button
+              MinWidth="110"
+              Margin="8 0 0 0"
+              Click="OnPauseClicked"
+              Content="{x:Static properties:Resources.SettingsSemanticPause}"
+              IsEnabled="{Binding State.IsIndexing}" />
+            <ui:Button
+              MinWidth="110"
+              Margin="8 0 0 0"
+              Click="OnRebuildClicked"
+              Content="{x:Static properties:Resources.SettingsSemanticRebuild}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <ui:TextBlock
+        Margin="0 25 0 7"
+        FontTypography="BodyStrong"
+        Text="{x:Static properties:Resources.SettingsSemanticSetup}" />
+      <Border
+        Padding="16"
+        Background="{ui:ThemeResource CardBackgroundFillColorDefaultBrush}"
+        BorderBrush="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+        BorderThickness="1 1 1 1"
+        CornerRadius="8">
+        <TextBlock
+          LineHeight="22"
+          Text="{x:Static properties:Resources.SettingsSemanticSetupSteps}"
+          TextWrapping="Wrap" />
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

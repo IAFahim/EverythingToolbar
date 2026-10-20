@@ -1,8 +1,10 @@
 using System.IO;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Config.Net;
+using EverythingToolbar.App.Semantic;
 using EverythingToolbar.Core.Platform;
 using EverythingToolbar.Search;
+using EverythingToolbar.Semantic;
 using EverythingToolbar.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,7 +21,7 @@ namespace EverythingToolbar
             IsInitialized = true;
 
             var services = new ServiceCollection();
-            services.AddSettings().AddPlatformAdapters().AddSearchEngine().AddShellServices().AddViewModels();
+            services.AddSettings().AddPlatformAdapters().AddSearchEngine().AddSemanticSearch().AddShellServices().AddViewModels();
 
             var provider = services.BuildServiceProvider();
             Ioc.Default.ConfigureServices(provider);
@@ -29,6 +31,9 @@ namespace EverythingToolbar
             var router = provider.GetRequiredService<EverythingClientRouter>();
             router.SetInstanceName(settings.InstanceName);
             router.SetForceLegacySdk(settings.IsForceLegacySdk);
+
+            if (settings.IsSemanticSearchEnabled)
+                provider.GetRequiredService<SemanticIndexBuilder>().StartIncremental();
         }
     }
 
@@ -75,6 +80,18 @@ namespace EverythingToolbar
                 .AddSingleton<CustomActionService>()
                 .AddSingleton<SearchResultActions>()
                 .AddSingleton<EverythingSearchLauncher>();
+        }
+
+        // Semantic search: EmbeddingGemma vectors served by a local Ollama instance.
+        public static IServiceCollection AddSemanticSearch(this IServiceCollection services)
+        {
+            return services
+                .AddSingleton<IEmbeddingClient, OllamaEmbeddingClient>()
+                .AddSingleton<IEmbeddingImageEncoder, WicImageEncoder>()
+                .AddSingleton<SemanticIndex>()
+                .AddSingleton<SemanticState>()
+                .AddSingleton<SemanticIndexBuilder>()
+                .AddSingleton<SemanticSearchService>();
         }
 
         // Windowing, theming, OS policy, and the global input hooks that drive the search window.

@@ -31,6 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EverythingToolbar.Platform"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EverythingToolbar.App", "EverythingToolbar.App\EverythingToolbar.App.csproj", "{22005E54-69C5-4F80-8B33-0682C546B8B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{07C2787E-EAC7-C090-1BA3-A61EC2A24D84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverythingToolbar.Cli", "EverythingToolbar.Cli\EverythingToolbar.Cli.csproj", "{C212CBC6-DA86-4313-A3F6-504057B0D4BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -169,9 +173,28 @@ Global
 		{22005E54-69C5-4F80-8B33-0682C546B8B5}.Release|Any CPU.Build.0 = Release|x64
 		{22005E54-69C5-4F80-8B33-0682C546B8B5}.Release|x86.ActiveCfg = Release|x64
 		{22005E54-69C5-4F80-8B33-0682C546B8B5}.Release|x86.Build.0 = Release|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Debug|x64.ActiveCfg = Debug|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Debug|x64.Build.0 = Debug|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Debug|ARM64.Build.0 = Debug|ARM64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Debug|Any CPU.Build.0 = Debug|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Debug|x86.ActiveCfg = Debug|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Debug|x86.Build.0 = Debug|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Release|x64.ActiveCfg = Release|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Release|x64.Build.0 = Release|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Release|ARM64.ActiveCfg = Release|ARM64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Release|ARM64.Build.0 = Release|ARM64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Release|Any CPU.ActiveCfg = Release|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Release|Any CPU.Build.0 = Release|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Release|x86.ActiveCfg = Release|x64
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C212CBC6-DA86-4313-A3F6-504057B0D4BB} = {07C2787E-EAC7-C090-1BA3-A61EC2A24D84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {609810BC-F3AE-4F4E-81F0-FD377F04734C}

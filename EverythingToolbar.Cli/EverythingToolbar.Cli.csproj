@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>EverythingToolbar.Cli</RootNamespace>
+    <AssemblyName>semcli</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EverythingToolbar\EverythingToolbar.csproj" />
+  </ItemGroup>
+</Project>

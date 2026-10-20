@@ -2100,5 +2100,230 @@ namespace EverythingToolbar.Properties {
                 return ResourceManager.GetString("ColorPickerBrightness", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Semantic.
+        /// </summary>
+        public static string DefaultFilterSemantic {
+            get {
+                return ResourceManager.GetString("DefaultFilterSemantic", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Semantic search.
+        /// </summary>
+        public static string SettingsSemanticSearch {
+            get {
+                return ResourceManager.GetString("SettingsSemanticSearch", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Find images by their content using a local embedding model served by Ollama..
+        /// </summary>
+        public static string SettingsSemanticSearchHelp {
+            get {
+                return ResourceManager.GetString("SettingsSemanticSearchHelp", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string SettingsSemanticGeneral {
+            get {
+                return ResourceManager.GetString("SettingsSemanticGeneral", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Ollama server URL.
+        /// </summary>
+        public static string SettingsSemanticOllamaUrl {
+            get {
+                return ResourceManager.GetString("SettingsSemanticOllamaUrl", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Base URL of the local Ollama REST API..
+        /// </summary>
+        public static string SettingsSemanticOllamaUrlHelp {
+            get {
+                return ResourceManager.GetString("SettingsSemanticOllamaUrlHelp", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Embedding model.
+        /// </summary>
+        public static string SettingsSemanticModel {
+            get {
+                return ResourceManager.GetString("SettingsSemanticModel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Ollama model tag for embeddings, e.g. embeddinggemma-2. Image search requires a multimodal variant (440m, 740m or latest)..
+        /// </summary>
+        public static string SettingsSemanticModelHelp {
+            get {
+                return ResourceManager.GetString("SettingsSemanticModelHelp", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Index.
+        /// </summary>
+        public static string SettingsSemanticIndex {
+            get {
+                return ResourceManager.GetString("SettingsSemanticIndex", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string SettingsSemanticStatus {
+            get {
+                return ResourceManager.GetString("SettingsSemanticStatus", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The index stores one embedding per image found by Everything. It is built in the background and searches use the indexed portion..
+        /// </summary>
+        public static string SettingsSemanticStatusHelp {
+            get {
+                return ResourceManager.GetString("SettingsSemanticStatusHelp", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Build index.
+        /// </summary>
+        public static string SettingsSemanticBuild {
+            get {
+                return ResourceManager.GetString("SettingsSemanticBuild", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pause.
+        /// </summary>
+        public static string SettingsSemanticPause {
+            get {
+                return ResourceManager.GetString("SettingsSemanticPause", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Rebuild index.
+        /// </summary>
+        public static string SettingsSemanticRebuild {
+            get {
+                return ResourceManager.GetString("SettingsSemanticRebuild", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} of {1} images indexed.
+        /// </summary>
+        public static string SettingsSemanticIndexedOfTotal {
+            get {
+                return ResourceManager.GetString("SettingsSemanticIndexedOfTotal", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} images indexed.
+        /// </summary>
+        public static string SettingsSemanticImagesIndexed {
+            get {
+                return ResourceManager.GetString("SettingsSemanticImagesIndexed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Last build: {0}.
+        /// </summary>
+        public static string SettingsSemanticLastBuild {
+            get {
+                return ResourceManager.GetString("SettingsSemanticLastBuild", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disabled.
+        /// </summary>
+        public static string SettingsSemanticStatusDisabled {
+            get {
+                return ResourceManager.GetString("SettingsSemanticStatusDisabled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Indexing.
+        /// </summary>
+        public static string SettingsSemanticStatusIndexing {
+            get {
+                return ResourceManager.GetString("SettingsSemanticStatusIndexing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Paused.
+        /// </summary>
+        public static string SettingsSemanticStatusPaused {
+            get {
+                return ResourceManager.GetString("SettingsSemanticStatusPaused", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unavailable.
+        /// </summary>
+        public static string SettingsSemanticStatusUnavailable {
+            get {
+                return ResourceManager.GetString("SettingsSemanticStatusUnavailable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Setup.
+        /// </summary>
+        public static string SettingsSemanticSetup {
+            get {
+                return ResourceManager.GetString("SettingsSemanticSetup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to 1. Install Ollama from https://ollama.com and start it.&#10;2. Pull the embedding model: ollama pull embeddinggemma-2&#10;3. Enable semantic search and build the index. Images never leave your machine..
+        /// </summary>
+        public static string SettingsSemanticSetupSteps {
+            get {
+                return ResourceManager.GetString("SettingsSemanticSetupSteps", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Semantic search is unavailable — is Ollama running with the embedding model pulled?.
+        /// </summary>
+        public static string SemanticNoticeUnavailable {
+            get {
+                return ResourceManager.GetString("SemanticNoticeUnavailable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The semantic index is empty. Build it in Settings → Semantic search..
+        /// </summary>
+        public static string SemanticNoticeEmptyIndex {
+            get {
+                return ResourceManager.GetString("SemanticNoticeEmptyIndex", resourceCulture);
+            }
+        }
     }
 }

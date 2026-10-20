@@ -11,5 +11,6 @@ namespace EverythingToolbar.Core.Services
         string Executable { get; }
         string Picture { get; }
         string Video { get; }
+        string Semantic { get; }
     }
 }

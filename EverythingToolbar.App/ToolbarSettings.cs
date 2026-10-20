@@ -172,5 +172,14 @@ namespace EverythingToolbar.App
 
         [Option(DefaultValue = 37)]
         int SearchWindowBackgroundBrightness { get; set; }
+
+        [Option(DefaultValue = false)]
+        bool IsSemanticSearchEnabled { get; set; }
+
+        [Option(DefaultValue = "http://localhost:11434")]
+        string SemanticOllamaUrl { get; set; }
+
+        [Option(DefaultValue = "embeddinggemma-2")]
+        string SemanticModelTag { get; set; }
     }
 }

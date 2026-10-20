@@ -150,6 +150,10 @@
             Header="{x:Static properties:Resources.SettingsRegularExpressions}"
             IsCheckable="True"
             IsChecked="{Binding Settings.IsRegExEnabled, Mode=TwoWay}" />
+          <MenuItem
+            Header="{x:Static properties:Resources.SettingsSemanticSearch}"
+            IsCheckable="True"
+            IsChecked="{Binding Settings.IsSemanticSearchEnabled, Mode=TwoWay}" />
           <Separator />
           <MenuItem
             Click="OpenSettingsWindow"

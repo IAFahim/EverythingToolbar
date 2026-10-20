@@ -798,4 +798,79 @@
   <data name="SettingsResults" xml:space="preserve">
     <value>Results</value>
   </data>
+  <data name="DefaultFilterSemantic" xml:space="preserve">
+    <value>Semantic</value>
+  </data>
+  <data name="SettingsSemanticSearch" xml:space="preserve">
+    <value>Semantic search</value>
+  </data>
+  <data name="SettingsSemanticSearchHelp" xml:space="preserve">
+    <value>Find images by their content using a local embedding model served by Ollama.</value>
+  </data>
+  <data name="SettingsSemanticGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="SettingsSemanticOllamaUrl" xml:space="preserve">
+    <value>Ollama server URL</value>
+  </data>
+  <data name="SettingsSemanticOllamaUrlHelp" xml:space="preserve">
+    <value>Base URL of the local Ollama REST API.</value>
+  </data>
+  <data name="SettingsSemanticModel" xml:space="preserve">
+    <value>Embedding model</value>
+  </data>
+  <data name="SettingsSemanticModelHelp" xml:space="preserve">
+    <value>Ollama model tag for embeddings, e.g. embeddinggemma-2. Image search requires a multimodal variant (440m, 740m or latest).</value>
+  </data>
+  <data name="SettingsSemanticIndex" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="SettingsSemanticStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SettingsSemanticStatusHelp" xml:space="preserve">
+    <value>The index stores one embedding per image found by Everything. It is built in the background and searches use the indexed portion.</value>
+  </data>
+  <data name="SettingsSemanticBuild" xml:space="preserve">
+    <value>Build index</value>
+  </data>
+  <data name="SettingsSemanticPause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="SettingsSemanticRebuild" xml:space="preserve">
+    <value>Rebuild index</value>
+  </data>
+  <data name="SettingsSemanticIndexedOfTotal" xml:space="preserve">
+    <value>{0} of {1} images indexed</value>
+  </data>
+  <data name="SettingsSemanticImagesIndexed" xml:space="preserve">
+    <value>{0} images indexed</value>
+  </data>
+  <data name="SettingsSemanticLastBuild" xml:space="preserve">
+    <value>Last build: {0}</value>
+  </data>
+  <data name="SettingsSemanticStatusDisabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="SettingsSemanticStatusIndexing" xml:space="preserve">
+    <value>Indexing</value>
+  </data>
+  <data name="SettingsSemanticStatusPaused" xml:space="preserve">
+    <value>Paused</value>
+  </data>
+  <data name="SettingsSemanticStatusUnavailable" xml:space="preserve">
+    <value>Unavailable</value>
+  </data>
+  <data name="SettingsSemanticSetup" xml:space="preserve">
+    <value>Setup</value>
+  </data>
+  <data name="SettingsSemanticSetupSteps" xml:space="preserve">
+    <value>1. Install Ollama from https://ollama.com and start it.&#10;2. Pull the embedding model: ollama pull embeddinggemma-2&#10;3. Enable semantic search and build the index. Images never leave your machine.</value>
+  </data>
+  <data name="SemanticNoticeUnavailable" xml:space="preserve">
+    <value>Semantic search is unavailable — is Ollama running with the embedding model pulled?</value>
+  </data>
+  <data name="SemanticNoticeEmptyIndex" xml:space="preserve">
+    <value>The semantic index is empty. Build it in Settings → Semantic search.</value>
+  </data>
 </root>

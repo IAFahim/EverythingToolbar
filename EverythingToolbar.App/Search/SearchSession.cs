@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using EverythingToolbar.App.Semantic;
 using EverythingToolbar.Core.Data;
 using EverythingToolbar.Core.Search;
 
@@ -14,15 +15,22 @@ namespace EverythingToolbar.App.Search
 
         private readonly SearchState _searchState;
         private readonly IEverythingClient _everythingClient;
+        private readonly SemanticSearchService _semanticSearch;
         private readonly ISettings _settings;
 
         private VirtualizingCollection<SearchResult>? _collection;
         private bool _started;
 
-        public SearchSession(SearchState searchState, IEverythingClient everythingClient, ISettings settings)
+        public SearchSession(
+            SearchState searchState,
+            IEverythingClient everythingClient,
+            SemanticSearchService semanticSearch,
+            ISettings settings
+        )
         {
             _searchState = searchState;
             _everythingClient = everythingClient;
+            _semanticSearch = semanticSearch;
             _settings = settings;
 
             _searchState.PropertyChanged += OnSearchStateChanged;
@@ -165,7 +173,14 @@ namespace EverythingToolbar.App.Search
                 return;
             }
 
-            var newProvider = new EverythingItemsProvider(_everythingClient, _searchState.BuildSearchQuery());
+            // When semantic mode is on and the vector index is usable, results come from the
+            // local index; otherwise Everything serves the query as usual (and the results view
+            // shows a notice explaining why semantic search is not delivering).
+            IItemsProvider<SearchResult> newProvider;
+            if (_searchState.IsSemanticMode && _semanticSearch.IsReady)
+                newProvider = new SemanticItemsProvider(_semanticSearch, _searchState.SearchTerm);
+            else
+                newProvider = new EverythingItemsProvider(_everythingClient, _searchState.BuildSearchQuery());
 
             if (_collection == null)
             {
